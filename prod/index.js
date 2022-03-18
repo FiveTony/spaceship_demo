@@ -71,6 +71,9 @@ var config = {
   }
 };
 
+var game = new Phaser.Game(config);
+
+
 var WebFont = require("webfontloader");
 WebFont.load({
   custom: {

@@ -45,6 +45,30 @@ module.exports = {
                 noErrorOnMissing: true,
             }]
         }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, "../src/assets/fonts"),
+                    to: path.resolve(__dirname, "../dist/src/assets/fonts"),
+                    globOptions: {
+                        ignore: ["*.DS_Store"],
+                    },
+                    noErrorOnMissing: true,
+                },
+            ],
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, "../src/assets/styles"),
+                    to: path.resolve(__dirname, "../dist/src/assets/styles"),
+                    globOptions: {
+                        ignore: ["*.DS_Store", "**/scss-styles"],
+                    },
+                    noErrorOnMissing: true,
+                },
+            ],
+        }),
     ],
     module: {
         rules: [{
