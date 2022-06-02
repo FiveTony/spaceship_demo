@@ -1,5 +1,5 @@
 const SPRITE_WIDTH = 73
-const KOEF_VELOCITY = 1
+const KOEF_VELOCITY = 0.1
 
 export default class MovableObject extends Phaser.GameObjects.Sprite {
     constructor(data) {

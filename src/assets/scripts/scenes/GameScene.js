@@ -9,30 +9,34 @@ const HEARTS_MIN = 0;
 
 const IS_BACKGROUND_DYNAMIC = true
 const BACKGROUND_VELOCITY = 0.15
+const ACCELERATION_BACKGROUND = 0.001
 
-const MAX_SCORE = 500
-const SCORE_STEP = 100
+const MAX_SCORE = 50
+const SCORE_STEP = 1
 const HEARTS = 3
 const IS_LEVEL_ANIMATION = true
+
+// const ACCELERATION_STEP = 1
 
 const PLAYER_DATA = {
   "playerScale": 1
 }
 const NEGATIVE_DATA = {
-  "frequencyNegative": [600, 650],
-  "maxNegativeOnLevel": 150,
+  "frequencyNegative": [1000, 1100],
+  "maxNegativeOnLevel": 200,
   "isHorizontal": true,
   "velocity": [250, 300],
   "isRotation": true,
-  "negativeScale": 0.7
+  "negativeScale": 0.5,
+  "accelerationFrequency": 0.2
 }
 const POSITIVE_DATA = {
-
-  "frequencyPositive": [700, 800],
-  "maxPositiveOnLevel": 100,
+  "frequencyPositive": [1100, 1200],
+  "maxPositiveOnLevel": 200,
   "isHorizontal": false,
   "velocity": [250, 300],
-  "isRotation": true
+  "isRotation": true,
+  "accelerationFrequency": 0.2
 }
 
 export default class GameScene extends Phaser.Scene {
@@ -44,6 +48,7 @@ export default class GameScene extends Phaser.Scene {
     this.height = this.game.config.height
   }
   create() {
+    console.log(this.game.config)
     this.createBackground();
 
     this.backgroundVelocity = BACKGROUND_VELOCITY;
@@ -66,19 +71,19 @@ export default class GameScene extends Phaser.Scene {
       .setVisible(false);
 
 
-    this.player.shake = this.plugins.get('rexShakePosition').add(this.player, {
-      mode: 0,
-      duration: 10000,
-      magnitude: 1.5,
-      magnitudeMode: 0
-    })
+    // this.player.shake = this.plugins.get('rexShakePosition').add(this.player, {
+    //   mode: 0,
+    //   duration: 10000,
+    //   magnitude: 1.5,
+    //   magnitudeMode: 0
+    // })
 
 
-    this.player.shake.shake();
+    // this.player.shake.shake();
 
-    // this.isStart = false;
-    // this.afterStart();
-    this.start()
+    this.isStart = false;
+    this.afterStart();
+    // this.start() // без анимации перед уровнем
 
     this.ui = new UI_elements(this, this.score, this.hearts);
     this.mute = false;
@@ -139,7 +144,7 @@ export default class GameScene extends Phaser.Scene {
     this.addOverlap();
     this.createCompleteEvents();
 
-    this.player.shake.shake();
+    // this.player.shake.shake();
   }
   createBackground() {
     var bg = this.add.graphics()
@@ -192,8 +197,8 @@ export default class GameScene extends Phaser.Scene {
       this.score += SCORE_STEP;
       this.countScorePositive++;
       this.ui.rect2.setText(`${this.score}`);
-      this.backgroundVelocity += 0.01;
-      this.tileVelocity += 0.01;
+      this.backgroundVelocity += ACCELERATION_BACKGROUND;
+      this.tileVelocity += ACCELERATION_BACKGROUND;
     }
     if ([source, target].find((item) => item.positive == false)) {
       this.tweens.add({

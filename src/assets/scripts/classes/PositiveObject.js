@@ -5,7 +5,8 @@ export default class PositiveObject extends MovableObject {
     static generateAttributes() {
         let x = super.generateСoordinates()
         const y = -100
-        return { x, y, texture: `ufo0${Phaser.Math.Between(1, 3)}` }
+        // return { x, y, texture: 'icecream' }
+        return { x, y, texture: `positive_0${Phaser.Math.Between(1, 5)}` }
     }
     static generate(scene) {
         const data = PositiveObject.generateAttributes()

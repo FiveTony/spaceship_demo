@@ -12,7 +12,7 @@ export default class Positive extends Phaser.Physics.Arcade.Group {
         this.countCreated = 0
 
         this.timer = this.scene.time.addEvent({
-            delay: Phaser.Math.Between(this.config.frequencyPositive[0], this.config.frequencyPositive[1]),
+            delay: 900,
             loop: true,
             callback: this.tick,
             callbackScope: this
@@ -31,13 +31,14 @@ export default class Positive extends Phaser.Physics.Arcade.Group {
         }
 
         positiveObject.move(this.config.velocity, this.config.isHorizontal, this.scene.countScorePositive)
-        if (this.isRotation) positiveObject.setRotation()
+        if (this.config.isRotation) positiveObject.setRotation()
         this.countCreated++
+        console.log("createPositiveObject",this.countCreated)
     }
     tick() {
         if (this.countCreated < this.countMax) {
             this.createPositiveObject()
-            this.timer.delay -= this.scene.countScorePositive / 3
+            this.timer.delay -= this.scene.countScorePositive * this.config.accelerationFrequency
         } else {
             this.timer.remove()
         }

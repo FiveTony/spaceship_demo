@@ -33,11 +33,12 @@ export default class Negative extends Phaser.Physics.Arcade.Group {
         negativeObject.move(this.config.velocity, this.config.isHorizontal, this.scene.countScorePositive)
         if (this.config.isRotation) negativeObject.setRotation()
         this.countCreated++
+        console.log("createNegativeObject", this.countCreated)
     }
     tick() {
         if (this.countCreated < this.countMax) {
             this.createNegativeObject()
-            this.timer.delay -= this.scene.countScorePositive / 3
+            this.timer.delay -= this.scene.countScorePositive * this.config.accelerationFrequency
         } else {
             this.timer.remove()
         }

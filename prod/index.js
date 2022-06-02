@@ -1,5 +1,5 @@
-import Phaser from "phaser";
-//import Phaser from "../phaser-custom";
+// import Phaser from "phaser";
+import Phaser from "../phaser-custom";
 
 import BootScene from "../src/assets/scripts/scenes/BootScene";
 import PreloadScene from "../src/assets/scripts/scenes/PreloadScene";
@@ -73,14 +73,13 @@ var config = {
 
 var game = new Phaser.Game(config);
 
-
-var WebFont = require("webfontloader");
-WebFont.load({
-  custom: {
-    families: ["BalsamiqSans"],
-    urls: ["../src/assets/styles/fonts.css"],
-  },
-  active: function () {
-    var game = new Phaser.Game(config);
-  }
-})
+// var WebFont = require("webfontloader");
+// WebFont.load({
+//   custom: {
+//     families: ["BalsamiqSans"],
+//     urls: ["../src/assets/styles/fonts.css"],
+//   },
+//   active: function () {
+//     var game = new Phaser.Game(config);
+//   }
+// })

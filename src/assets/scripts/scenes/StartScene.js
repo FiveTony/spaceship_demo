@@ -18,6 +18,7 @@ export default class StartScene extends Phaser.Scene {
       .graphics()
       .fillStyle(0x000000, 1)
       .fillRect(0, 0, 500, 800);
+
     this.stars = this.add
       .tileSprite(
         0,

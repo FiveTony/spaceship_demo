@@ -16,11 +16,26 @@ var Phaser = {
   Game: require("./node_modules/phaser/src/core/Game"),
   GameObjects: require("./node_modules/phaser/src/gameobjects"),
   Input: require("./node_modules/phaser/src/input"),
-  Loader: require("./node_modules/phaser/src/loader"),
+  Loader: {
+    FileTypes: {
+        AudioFile: require('./node_modules/phaser/src/loader/filetypes/AudioFile'),
+        AudioSpriteFile: require('./node_modules/phaser/src/loader/filetypes/AudioSpriteFile'),
+        HTML5AudioFile: require('./node_modules/phaser/src/loader/filetypes/HTML5AudioFile'),
+        ImageFile: require('./node_modules/phaser/src/loader/filetypes/ImageFile'),
+        JSONFile: require('./node_modules/phaser/src/loader/filetypes/JSONFile'),
+        PluginFile: require('./node_modules/phaser/src/loader/filetypes/PluginFile'),
+        ScriptFile: require('./node_modules/phaser/src/loader/filetypes/ScriptFile'),
+        SVGFile: require('./node_modules/phaser/src/loader/filetypes/SVGFile')
+    },
+    File: require('./node_modules/phaser/src/loader/File'),
+    FileTypesManager: require('./node_modules/phaser/src/loader/FileTypesManager'),
+    LoaderPlugin: require('./node_modules/phaser/src/loader/LoaderPlugin'),
+  },
   Math: {
     Between: require("./node_modules/phaser/src/math/Between"),
+    FloatBetween: require("./node_modules/phaser/src/math/FloatBetween"),
   },
-  // DOM: require("./node_modules/phaser/src/dom"),
+  DOM: require("./node_modules/phaser/src/dom"),
   Physics: require("./node_modules/phaser/src/physics"),
   Plugins: require("./node_modules/phaser/src/plugins"),
   Scene: require("./node_modules/phaser/src/scene/Scene"),
@@ -30,10 +45,10 @@ var Phaser = {
   Time: require("./node_modules/phaser/src/time"),
   Tweens: require("./node_modules/phaser/src/tweens"),
   Textures: require("./node_modules/phaser/src/textures"),
-  // Utils: require("./node_modules/phaser/src/utils"),
+  Utils: require("./node_modules/phaser/src/utils"),
 };
 
-Phaser = Extend(false, Phaser, CONST); //  Merge in the consts
+Phaser = Extend(false, Phaser, CONST);
 
-export default Phaser; //  Export it
+export default Phaser;
 global.Phaser = Phaser;
